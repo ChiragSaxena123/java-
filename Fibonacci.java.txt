@@ -1,0 +1,22 @@
+import java.util.Scanner;
+class Fibonacci
+{
+public static void main(String[]args)
+{
+Scanner kb=new Scanner(System.in);
+System.out.println("enter a length");
+int n=kb.nextInt();
+int a=-1;
+int b=1;
+int c;
+do
+{
+c=a+b;
+a=b;
+b=c;
+System.out.println(c);
+n--;
+}
+while(n>0);
+}
+}
