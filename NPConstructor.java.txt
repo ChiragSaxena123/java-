@@ -1,0 +1,19 @@
+class cons
+{
+ int n;
+ cons()
+ {
+     n=10;
+    }
+    void show_data()
+    {
+        System.out.println(n);
+    }
+}
+public class Myclass
+{
+    public static void main(String[]args)
+    {
+        cons c=new cons();
+        c.show_data();
+    }}

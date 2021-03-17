@@ -1,0 +1,26 @@
+ class number
+{
+    int id;
+    String  name;
+        
+    number(int i,String n)
+    {
+        id=i;
+        name=n;
+    }
+    void show()
+    {
+        System.out.println(id);
+        System.out.println(name);
+    }
+}
+public class My
+{
+    public static void main(String[]args)
+    {
+        number x=new number(111,"karan");
+        x.show();
+        
+    }
+}
+    
