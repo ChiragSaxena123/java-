@@ -1,0 +1,10 @@
+import java.util.Random;
+public class Test
+{
+public static void main(String[]args)
+{
+Random obj=new Random();
+int num=obj.nextInt(100000000);
+System.out.println(num);
+}
+}
