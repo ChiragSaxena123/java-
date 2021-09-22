@@ -6,102 +6,111 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-
-public class GenarateReceipt {
-    static int totalPrice=0;
+public class GenerateRecipt {
+ static long totalPrice=0;
     static int count=1;
     static int k=0;
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Recipt");
-        ImageIcon icon = new ImageIcon("i:\\image\\icon.jpg");  //give your own image path
+        JFrame frame = new JFrame("Electronics Items");
+        ImageIcon icon = new ImageIcon("");  //give your own image path
         frame.setIconImage(icon.getImage());
-        frame.setSize(1400,900);        
+
+        frame.setSize(1400,900);
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
+
+
         //FONT
         Font font1 = new Font("Copperplate Gothic",BOLD,20);
         Font font2 = new Font("Footlight MT",ITALIC,30);
-        
-        
+
         //border
-        Border border= BorderFactory.createLineBorder(Color.black);
-        
-        
-        JPanel panel1= new JPanel();
-        panel1.setBounds(850, 50, 500, 600);        
+        Border border= BorderFactory.createLineBorder(Color.red);
+
+
+        final JPanel panel1= new JPanel();
+        panel1.setBounds(1050, 100, 800, 800);    //total panel
         panel1.setBorder(border);
+         panel1.setBackground(Color.gray);
+
         panel1.setLayout(new FlowLayout());
         frame.add(panel1);
-        
-        JTextArea ta = new JTextArea();
-        ta.setBounds(0,0,500,600);
+
+      final JTextArea ta = new JTextArea();
+        ta.setBounds(300,100,500,600);
         ta.setFont(font2);
-        ta.setBackground(Color.WHITE);
-        ta.setForeground(Color.RED);
-        ta.setEditable(false);        
+        ta.setBackground(Color.black);
+        ta.setForeground(Color.cyan);
+        ta.setEditable(false);
         panel1.add(ta);
-        
+
+
+         final JTextArea ta1 = new JTextArea();
+        ta1.setBounds(300,1000,500,600);
+        ta1.setFont(font2);
+        ta1.setBackground(Color.black);
+        ta1.setForeground(Color.cyan);
+        ta1.setEditable(false);
+        panel1.add(ta1);
+
         panel1.setVisible(false);
-        
-        JPanel panel2= new JPanel();
-        panel2.setBounds(50, 50, 750, 600);
-        panel2.setBackground(Color. PINK);
+
+        JPanel panel2= new JPanel();   //order menu panel
+        panel2.setBounds(150, 100, 800, 800);
+        panel2.setBackground(Color.gray);
         panel2.setBorder(border);
         panel2.setLayout(null);
         frame.add(panel2);
-        
-        JLabel lbl1= new JLabel("<html><h1>ORDER MENU<br></h1</html>");
-        lbl1.setForeground(Color.BLACK);
+
+        JLabel lbl1= new JLabel("<html><h1>Electronics Items<br></h1</html>");
+        lbl1.setForeground(Color.red);    //oreder heading
         lbl1.setFont(font1);
-        lbl1.setBounds(300,10,200,50);
+        lbl1.setBounds(300,10,200,75);
         panel2.add(lbl1);
-        
-        
-        JCheckBox[] cb = new JCheckBox[11];
-        String item[] ={"Tea","Cofee","Ice-Cream","Bread","Sandwitch","Fish","Rice","Steak","salad","Spaghetti","aalu"};
-        int price[] ={2,5,10,3,15,20,10,17,2,6,7};
-        int x1=100,y1=100;    
-        
-        
-        
-        
-        
+
+
+        final JCheckBox[] cb = new JCheckBox[12];
+        final String item[] ={"Computer","A.C","TV","Fridge","Mouse","Printer","Plotter","Pen-Drive","Camera","Key-Board","Speaker","Phone"};
+        final long price[] ={30000,44000,12000,40000,300,5000,1000,800,999,500,8000,18000};
+        int x1=100,y1=150;
+
+
+
+
         for(int i=0; i<item.length; i++){
             cb[k] = new JCheckBox();
             cb[k].setText(item[i]+"  "+price[i]+" Rs");
-            cb[k].setBounds(x1,y1,200, 50);            
+            cb[k].setBounds(x1,y1,220, 50);  //items panel
             cb[k].setFont(font1);
-            cb[k].setBackground(Color.gray);
+            cb[k].setBackground(Color.black);
             cb[k].setForeground(Color.cyan);
-            panel2.add(cb[i]);            
-            
+            panel2.add(cb[i]);
+
             k++;
             y1+=50;
-            if(i==4){
+            if(i==5){
                x1=500;
-               y1=100;
+               y1=150;
             }
-                        
-        }      
-        
-        JButton rec = new JButton("Generate Reciept");
-        rec.setBounds(300,500,150,50);
+
+        }
+
+        final JButton rec = new JButton("Generate Reciept");
+        rec.setBounds(330,550,160,70);
         panel2.add(rec);
         rec.setBorder(border);
         frame.setVisible(true);
-                        
-        
-        List list = new ArrayList();
-        
+
+
+        final List list = new ArrayList();
+
         rec.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(count%2==0){
                     System.exit(0);
                 }
-                
+
                 if(cb[0].isSelected()){
                     totalPrice+=price[0];
                     list.add(item[0]+"  "+price[0]+"Rs");
@@ -142,28 +151,27 @@ public class GenarateReceipt {
                     totalPrice+=price[9];
                     list.add(item[9]+"  "+price[9]+"Rs");
                 }
-                if(cb[10].isSelected()){
-                    totalPrice+=price[10];
-                    list.add(item[10]+"  "+price[10]+"Rs");
-                }
-                rec.setText("Exit");                
-                
+                rec.setText("Exit");
+
                 int i=0;
-                for(Object items : list){                    
+                for(Object items : list){
                     i++;
-                    ta.append(i +".   "+items+"\n");
+                    ta.append("           ");
+                    ta.append(i +".  "+items+"\n");
                 }
-                ta.append("~~~~~~~~~~~~~~~~~~~~~~ \n");
-                ta.append("Total Price  :"+totalPrice+" Rs");
+                ta.append("       ---------------------------------\n");
+                ta.append("            Total Price  :"+totalPrice+" Rs              \n  ");
+                ta1.append("Thank You For Purchasing ");
+                ta1.append("\nElectronic Items..!!");
                 count++;
-                
+
                 panel1.setVisible(true);
-                 panel1.setBackground(Color. BLUE);
-                   
-            }  
+            }
         });
 
     }
-    
-}
 
+    void setVisible(boolean b) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+}
